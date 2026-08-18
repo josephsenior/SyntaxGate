@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "syntaxgate"
+version = "0.1.0"
+description = "Fast, structured syntax-regression detection for source files and generated edits"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Youssef Mejdi" }]
+keywords = ["syntax", "tree-sitter", "validation", "agents", "pre-commit"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+  "tree-sitter>=0.26.0,<0.27",
+  "tree-sitter-language-pack>=1.14.3,<1.15",
+]
+
+[project.scripts]
+syntaxgate = "syntaxgate.cli:main"
+
+[project.optional-dependencies]
+dev = ["build>=1.2", "pytest>=8", "ruff>=0.11"]
+
+[project.urls]
+Homepage = "https://github.com/josephsenior/SyntaxGate"
+Repository = "https://github.com/josephsenior/SyntaxGate"
+Issues = "https://github.com/josephsenior/SyntaxGate/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/syntaxgate"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/tests",
+  "/README.md",
+  "/LICENSE",
+  "/SECURITY.md",
+  "/CHANGELOG.md",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
