@@ -1,0 +1,6 @@
+- id: syntaxgate
+  name: SyntaxGate
+  description: Validate syntax in changed source files
+  entry: syntaxgate
+  language: python
+  types: [text]
