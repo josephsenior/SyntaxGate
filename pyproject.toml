@@ -25,7 +25,7 @@ classifiers = [
 ]
 dependencies = [
   "tree-sitter>=0.26.0,<0.27",
-  "tree-sitter-language-pack>=1.14.3,<1.15",
+  "tree-sitter-language-pack>=1.14.3,<1.21",
 ]
 
 [project.scripts]
